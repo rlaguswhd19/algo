@@ -1,0 +1,89 @@
+package baekjoon;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
+
+public class Main14502 {
+	static int[][] array;
+	static Queue<virus> q;
+	static int count;
+	static int[] a = {1, -1, 0, 0};
+	static int[] b = {0, 0, 1, -1};
+	static int n, m;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		n = sc.nextInt();
+		m = sc.nextInt();
+		array = new int[n][m];
+		q = new LinkedList<>();
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				int a = sc.nextInt();
+				if(a == 2) {
+					q.add(new virus(i ,j));
+				}
+				array[i][j] = a;
+			}
+		}
+		
+		virus();
+		
+		System.out.println("===================================");
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				System.out.print(array[i][j]+" ");
+			}System.out.println();
+		}
+		
+	}
+	
+	static void virus() {
+		int[][] array = copy();
+		while(!q.isEmpty()) {
+			int size = q.size();
+			for (int i = 0; i < size; i++) {
+				virus v = q.poll();
+				for (int j = 0; j < 4; j++) {
+					if(v.x +a[j] >= 0 && v.y +b[j]>= 0 && v.x + a[j]< array.length && v.y + b[j]< array.length ) {
+						if(array[v.x+a[j]][v.y+b[j]] == 0) {
+							array[v.x+a[j]][v.y+b[j]] = 2;
+							q.add(new virus(v.x+a[j],v.y+b[j]));
+						}
+					}
+				}
+			}
+		}
+		System.out.println("===================================");
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				System.out.print(array[i][j]+" ");
+			}System.out.println();
+		}
+	}
+	
+	static int[][] copy() {
+		int[][] copy = new int[n][m];
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < m; j++) {
+				copy[i][j] = array[i][j];
+			}
+		}
+		return copy;
+	}
+	static class virus {
+		int x;
+		int y;
+		
+		public virus(int x, int y) {
+			super();
+			this.x = x;
+			this.y = y;
+		}
+		
+		@Override
+		public String toString() {
+			return "virus [x=" + x + ", y=" + y + "]";
+		}
+	}
+}

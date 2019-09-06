@@ -1,0 +1,26 @@
+package baekjoon;
+
+import java.util.Scanner;
+
+public class Main1012 {
+	static int[][] array;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int t = sc.nextInt();
+		for (int tc = 0; tc < t; tc++) {
+			int m = sc.nextInt();
+			int n = sc.nextInt();
+			int k = sc.nextInt();
+			array = new int[m][n];
+			for (int i = 0; i < k; i++) {
+				int x = sc.nextInt();
+				int y = sc.nextInt();
+				array[x][y] = 1;
+			}
+			
+		}
+	}
+	static void DFS() {
+		
+	}
+}

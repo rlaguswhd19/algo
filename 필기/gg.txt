@@ -1,0 +1,33 @@
+# 아톰
+
+###### install
+
+- script 3.18.1
+- platformio-ide-terminal
+- language-vue
+- autoclose-html
+
+
+
+## xs,sm,md등의 설명
+
+https://blog.minamiland.com/376
+
+https://fkkmemi.github.io/nemv/nemv-015-vuetify-layout/
+
+
+
+## Vuetify
+
+https://vuetifyjs.com/ko/components/avatars
+
+
+
+###### 맨땅에 개발하기
+
+Vue Cli 3.0 보던거
+
+https://www.youtube.com/watch?v=L8VLByQLtjc&list=PLZzSdj89sCN0sLqrTKf2m7lXe_93C19UG&index=5
+
+###### https://project.ssafy.com
+

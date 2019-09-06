@@ -1,0 +1,46 @@
+package baekjoon;
+
+import java.util.Scanner;
+
+public class Main2667 {
+	static int[][] arr;
+	static boolean[][] visit;
+	static int[] dx = {1,0,-1,0};
+	static int[] dy = {0,1,0,-1};
+	static int result;
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		int n = sc.nextInt();
+		arr = new int[n][n];
+		visit = new boolean[n][n];
+		result = 0;
+		System.out.println(n);
+		for (int i = 0; i < n; i++) {
+			for (int j = 0; j < n; j++) {
+				int a = sc.nextInt();
+				arr[i][j] = a;
+			}
+		}
+//		System.out.println(1);
+//		for (int i = 0; i < n; i++) {
+//			for (int j = 0; j < n; j++) {
+//				if(!visit[i][j] && arr[i][j] == 1) {
+//					System.out.println(i+" "+j);
+//					DFS(i, j);
+//					result++;
+//				}
+//			}
+//		}
+		System.out.println("#"+result);
+	}
+	static void DFS(int i, int j) {
+		visit[i][j] = true;
+		for (int j2 = 0; j2 < 4; j2++) {
+			if(i+dx[j2] >= 0 && i+dx[j2] < arr.length && j+dy[j2] >= 0 && j+dy[j2] < arr.length) {
+				if(!visit[i+dx[j2]][j+dy[j2]] && arr[i+dx[j2]][j+dy[j2]] == 1) {
+					DFS(i+dx[j2],j+dy[j2]);
+				}
+			}
+		}
+	}
+}
