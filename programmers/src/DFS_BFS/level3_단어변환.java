@@ -5,49 +5,66 @@ import java.util.ArrayList;
 public class level3_단어변환 {
 	static String begin = "hit";
 	static String target = "cog";
-	static String[] words = { "hot", "dot","dog","lot","log" };
-	static boolean[] visit;
-	static int result;
-	static int count;
-
+	static String[] words = {"hot", "dot", "dog", "lot", "log","cog"};
+	static int ans;
+	static int same;
+	static ArrayList<String> arr;
 	public static void main(String[] args) {
-		result = 0;
-		count = Integer.MAX_VALUE;
-		visit = new boolean[words.length];
-		dfs(begin, 0, words);
-		if(count == Integer.MAX_VALUE) {
-			System.out.println(0);
-		}else {
-			System.out.println(count);
+		ans = Integer.MAX_VALUE;
+		arr = new ArrayList<>();
+		for (int i = 0; i < begin.length(); i++) {
+			if(begin.charAt(i) == target.charAt(i)) {
+				same++;
+			}
 		}
+		System.out.println(same);
+		for (int i = 0; i < words.length; i++) {
+			arr.add(words[i]);
+		}
+		dfs(0, begin, target, arr);
+		System.out.println(ans);
 	}
-
-	static void dfs(String begin, int result, String[] words) {
-		if (begin.equals(target)) {
-			count = Math.min(result, count);
+	static void dfs(int cnt, String begin, String target, ArrayList<String> arr) {
+		System.out.println(arr);
+		System.out.println(begin);
+		
+		if(begin.equals(target)) {
+			ans = Math.min(ans, cnt);
 			return;
 		}
-		for (int i = 0; i < words.length; i++) {
-			int cnt = 0;
-			if (!visit[i]) {
-				for (int j = 0; j < begin.length(); j++) {
-					if (words[i].charAt(j) != begin.charAt(j)) {
-						cnt++;
-					}
-				}
-				if (cnt == 1) {
-					visit[i] = true;
-					dfs(begin, result, words); // 안바꿀경우
-					visit[i] = false;
-					visit[i] = true;
-					dfs(words[i], result + 1, words); // 바꿀경우
-					visit[i] = false;
-				} else { // 안바꿀경우
-					visit[i] = true;
-					dfs(begin, result, words);
-					visit[i] = false;
+		ArrayList<String> temp = new ArrayList<>();
+		for (int i = 0; i < arr.size(); i++) {
+			int count = 0;
+			for (int j = 0; j < begin.length(); j++) { //1개가 다른지 아닌지 파악하기
+				if(begin.charAt(j) != arr.get(i).charAt(j)) {
+					count++;
 				}
 			}
+			if(count == 1) {
+				temp.add(arr.get(i));
+			}
+		}
+		System.out.println(temp);
+		System.out.println();
+		for (int i = 0; i < temp.size(); i++) {
+			if(check(temp.get(i), target)) {
+				arr.remove(temp.get(i));
+				dfs(cnt+1, temp.get(i), target, arr);
+			}
+		}
+	}
+	static boolean check(String temp, String target) {
+		int count = 0;
+		for (int i = 0; i < temp.length(); i++) {
+			if(temp.charAt(i) == target.charAt(i)) {
+				count++;
+			}
+		}
+		if(count >= same) {
+			same = count;
+			return true;
+		}else {
+			return false;
 		}
 	}
 }
