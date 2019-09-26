@@ -127,8 +127,8 @@ public class Solution5648 {
 					break;
 				}
 			}
-			map[arr.get(index).x][arr.get(index).y] = 0;
-			arr.remove(index); //비워버리자
+//			map[arr.get(index).x][arr.get(index).y] = 0;
+//			arr.remove(index); //비워버리자
 			set = new HashSet<>();
 		}
 	}
