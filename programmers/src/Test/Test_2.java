@@ -1,7 +1,5 @@
 package Test;
 
-import java.util.ArrayList;
-
 public class Test_2 {
 	static int[][] arr;
 	static int[][] set;
@@ -19,13 +17,6 @@ public class Test_2 {
 		}
 		for (int i = 0; i < bishops.length; i++) {
 			dfs(set[i][0], set[i][1]);
-//			for (int j = 0; j < 8; j++) {
-//				for (int j2 = 0; j2 < 8; j2++) {
-//					System.out.print(arr[j][j2] + " ");
-//				}
-//				System.out.println();
-//			}
-//			System.out.println();
 		}
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
