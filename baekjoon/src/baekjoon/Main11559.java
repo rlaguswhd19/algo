@@ -1,6 +1,7 @@
 package baekjoon;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main11559 {
@@ -49,10 +50,9 @@ public class Main11559 {
 				}
 			}
 		}
-//
-//		for (int i = 0; i < 12; i++) {
-//			System.out.println(Arrays.toString(arr[i]));
-//		}
+		for (int i = 0; i < 12; i++) {
+			System.out.println(Arrays.toString(arr[i]));
+		}
 		start();
 	}
 
@@ -78,7 +78,7 @@ public class Main11559 {
 
 					if (plist.size() >= 4) {
 						stop = true;
-//						System.out.println(plist.size());
+						System.out.println("plist 사이즈 :" +plist.size());
 						for (int j = 0; j < plist.size(); j++) {
 							point p = plist.get(j);
 							arr[p.i][p.j] = '.';
@@ -87,14 +87,14 @@ public class Main11559 {
 				}
 			}
 		}
-		// 다 .이면 끝내기
+		// 한줄이 .이면 끝내기
 		if (!isOk) {
 			return;
 		}
 	}
 
 	static void dfs(int r, int c, char first) {
-//		System.out.println(r + " " + c);
+		System.out.println(r + " " + c);
 		visit[r][c] = true;
 
 		for (int i = 0; i < 4; i++) {
