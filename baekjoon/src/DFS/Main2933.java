@@ -121,7 +121,7 @@ public class Main2933 {
 					break;
 				}
 			}
-
+			
 			if (down) {
 				for (point p : list) {
 					p.x++;
