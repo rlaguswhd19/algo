@@ -14680,3 +14680,6 @@ Caused by: org.eclipse.lsp4j.jsonrpc.ResponseErrorException: Internal error.
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2020-02-04 22:10:31.342
 !MESSAGE executing callback sts4.classpath.cuwliEPt SUCCESS [done]
+
+!ENTRY org.eclipse.ui 2 2 2020-02-04 22:12:17.231
+!MESSAGE Invalid property category path: org.springframework.ide.eclipse.beans.ui.properties.ProjectPropertyPage (bundle: org.springframework.ide.eclipse.xml.namespaces, propertyPage: org.springframework.ide.eclipse.beans.ui.namespaces.projectPropertyPage)
