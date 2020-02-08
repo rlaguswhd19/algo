@@ -36,7 +36,7 @@ public class Main1697 {
 					break loop;
 				}
 
-				if (x + 1 < 100000 && x + 1 <= k) {
+				if (x + 1 <= 100000) {
 					if (!visit[x + 1]) {
 						visit[x + 1] = true;
 						q.add(x + 1);
@@ -50,7 +50,7 @@ public class Main1697 {
 					}
 				}
 
-				if (2 * x < 100000 && 2 * x <= k) {
+				if (2 * x <= 100000) {
 					if (!visit[2 * x]) {
 						visit[2 * x] = true;
 						q.add(2 * x);
