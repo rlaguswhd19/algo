@@ -66,7 +66,7 @@ public class Main13460 {
 				}
 			}
 			ans++;
-			if (ans > 10) {
+			if (ans >= 10) {
 				System.out.println(-1);
 				return;
 			}
