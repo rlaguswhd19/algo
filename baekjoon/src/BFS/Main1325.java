@@ -32,7 +32,7 @@ public class Main1325 {
 			st = new StringTokenizer(br.readLine());
 			int a = Integer.parseInt(st.nextToken());
 			int b = Integer.parseInt(st.nextToken());
-			arr[b].add(a);
+			arr[a].add(b);
 		}
 
 		for (int i = 1; i < n + 1; i++) {
@@ -56,20 +56,17 @@ public class Main1325 {
 
 		q.add(start);
 		visit[start] = true;
-		int count = 0;
 		while (!q.isEmpty()) {
 			int num = q.poll();
-
 			for (int i = 0; i < arr[num].size(); i++) {
 				int next = arr[num].get(i);
 
 				if (!visit[next]) {
 					q.add(next);
 					visit[next] = true;
+					distance[next]++;
 				}
 			}
 		}
-		
-		distance[start] = count;
 	}
 }
