@@ -59,12 +59,15 @@ public class Main1600 {
 			if (!isRange(p.x, p.y)) {
 				continue;
 			}
+			
 			if (map[p.x][p.y] == 1) {
 				continue;
 			}
+			
 			if (visit[k2][p.x][p.y]) {
 				continue;
 			}
+			
 			visit[k2][p.x][p.y] = true;
 			
 			for (int i = 0; i < 4; i++) {
