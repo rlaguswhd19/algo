@@ -9,22 +9,18 @@ public class Main1726 {
 	static int[][] map;
 	static Queue<Point> q;
 	static Point end;
-	static int[][][] visit;
+	static boolean[][][] visit;
+	static int[] dx = { 0, 0, 1, -1 };
+	static int[] dy = { 1, -1, 0, 0 }; // 동 서 남 북
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		n = sc.nextInt();
 		m = sc.nextInt();
 		map = new int[n + 1][m + 1];
-		visit = new int[5][n + 1][m + 1];
+		visit = new boolean[5][n + 1][m + 1];
 		q = new LinkedList<>();
-		
-		for (int i = 1; i < 5; i++) {
-			for (int j = 1; j < n+1; j++) {
-				for (int j2 = 1; j2 < m+1; j2++) {
-					visit[i][j][j2] = Integer.MAX_VALUE;
-				}
-			}
-		}
+
 		for (int i = 1; i < n + 1; i++) {
 			for (int j = 1; j < m + 1; j++) {
 				map[i][j] = sc.nextInt();
@@ -37,140 +33,73 @@ public class Main1726 {
 			int dir = sc.nextInt();
 
 			if (i == 0) {
+				visit[dir][x][y] = true;
 				q.add(new Point(x, y, dir, 0));
-				visit[dir][x][y] = 0;
 			} else {
 				end = new Point(x, y, dir, 0);
 			}
 		}
 
 		bfs();
-		
-		System.out.println(visit[end.dir][end.x][end.y]);
 	}
 
 	static void bfs() {
 
 		while (!q.isEmpty()) {
-			int size = q.size();
 			Point p = q.poll();
 			int dir = p.dir;
 			int x = p.x;
 			int y = p.y;
-			int cnt = 0;
+			int cnt = p.cnt;
 
-			switch (dir) {
-			case 1: // 동쪽
+			if (p.x == end.x && p.y == end.y && dir == end.dir) {
+				System.out.println(cnt);
+				return;
+			}
 
-				if (visit[4][x][y] > p.cnt) {
-					q.add(new Point(x, y, 4, p.cnt+1));
-					visit[4][x][y] = p.cnt+1;
+			for (int i = 1; i <= 3; i++) {
+				int nx = x + (dx[dir - 1] * i);
+				int ny = y + (dy[dir - 1] * i);
+				if (!isRange(nx, ny)) {
+					break;
 				}
-
-				if (visit[3][x][y] > p.cnt) {
-					q.add(new Point(x, y, 3, p.cnt+1));
-					visit[3][x][y] = p.cnt+1;
+				if (map[nx][ny] == 0) {
+					if (!visit[dir][nx][ny]) {
+						visit[dir][nx][ny] = true;
+						q.add(new Point(nx, ny, dir, cnt + 1));
+					}
+				} else {
+					break;
 				}
+			}
 
-				loop: while (cnt < 3) {
-					if (!isRange(x, y + 1)) {
-						break;
+			for (int i = 1; i < 5; i++) {
+				if (dir != i && !visit[i][x][y]) {
+					int add = 1;
+					if (dir == 1) {
+						if (i == 2) {
+							add++;
+						}
+					} else if (dir == 2) {
+						if (i == 1) {
+							add++;
+						}
+					} else if (dir == 3) {
+						if (i == 4) {
+							add++;
+						}
+					} else if (dir == 4) {
+						if (i == 3) {
+							add++;
+						}
 					}
 
-					if (map[x][y + 1] == 0 && visit[dir][x][y + 1] > p.cnt+1) {
-						visit[dir][x][y + 1] = p.cnt+1;
-						q.add(new Point(x, y + 1, dir, p.cnt+1));
-					} else {
-						break loop;
-					}
-					cnt++;
-					y++;
+					visit[i][x][y] = true;
+					q.add(new Point(x, y, i, cnt + add));
 				}
-				break;
-
-			case 2: // 서쪽
-				if (visit[4][x][y] > p.cnt) {
-					q.add(new Point(x, y, 4, p.cnt+1));
-					visit[4][x][y] = p.cnt+1;
-				}
-
-				if (visit[3][x][y] > p.cnt) {
-					q.add(new Point(x, y, 3, p.cnt+1));
-					visit[3][x][y] = p.cnt+1;
-				}
-
-				loop: while (cnt < 3) {
-					if (!isRange(x, y - 1)) {
-						break;
-					}
-
-					if (map[x][y - 1] == 0 && visit[dir][x][y - 1] > p.cnt+1) {
-						visit[dir][x][y - 1] = p.cnt+1;
-						q.add(new Point(x, y - 1, dir, p.cnt+1));
-					} else {
-						break loop;
-					}
-					cnt++;
-					y--;
-				}
-				break;
-
-			case 3: // 남쪽
-				if (visit[1][x][y] > p.cnt+1) {
-					q.add(new Point(x, y, 1, p.cnt+1));
-					visit[1][x][y] = p.cnt+1;
-				}
-
-				if (visit[2][x][y] > p.cnt+1) {
-					q.add(new Point(x, y, 2, p.cnt+1));
-					visit[2][x][y] = p.cnt+1;
-				}
-
-				loop: while (cnt < 3) {
-					if (!isRange(x + 1, y)) {
-						break;
-					}
-
-					if (map[x + 1][y] == 0 && visit[dir][x + 1][y] > p.cnt+1) {
-						visit[dir][x + 1][y] = p.cnt+1;
-						q.add(new Point(x + 1, y, dir, p.cnt+1));
-					} else {
-						break loop;
-					}
-					cnt++;
-					x++;
-				}
-				break;
-
-			case 4: // 북쪽
-				if (visit[1][x][y] > p.cnt+1) {
-					q.add(new Point(x, y, 1, p.cnt+1));
-					visit[1][x][y] = p.cnt+1;
-				}
-
-				if (visit[2][x][y] > p.cnt+1) {
-					q.add(new Point(x, y, 2, p.cnt+1));
-					visit[2][x][y] = p.cnt+1;
-				}
-
-				loop: while (cnt < 3) {
-					if (!isRange(x - 1, y)) {
-						break;
-					}
-
-					if (map[x - 1][y] == 0 && visit[dir][x - 1][y] > p.cnt+1) {
-						visit[dir][x - 1][y] = p.cnt+1;
-						q.add(new Point(x - 1, y, dir, p.cnt+1));
-					} else {
-						break loop;
-					}
-					cnt++;
-					x--;
-				}
-				break;
 			}
 		}
-	}	
+	}
 
 	static boolean isRange(int x, int y) {
 		if (x >= 1 && y >= 1 && x < n + 1 && y < m + 1) {
