@@ -10,9 +10,6 @@ public class Main1726 {
 	static Queue<Point> q;
 	static Point end;
 	static boolean[][][] visit;
-	static int[] dx = { 0, 0, 1, -1 };
-	static int[] dy = { 1, -1, 0, 0 };
-	static boolean find;
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -21,7 +18,6 @@ public class Main1726 {
 		map = new int[n + 1][m + 1];
 		visit = new boolean[5][n + 1][m + 1];
 		q = new LinkedList<>();
-		find = false;
 
 		for (int i = 1; i < n + 1; i++) {
 			for (int j = 1; j < m + 1; j++) {
@@ -45,66 +41,138 @@ public class Main1726 {
 		bfs();
 	}
 
-	static void go(int x, int y, int dir, int cnt) {
-		if (cnt > 3) {
-			return;
-		}
-
-		if (!visit[dir][x][y]) {
-			q.add(new Point(x, y, dir));
-			visit[dir][x][y] = true;
-		}
-
-		int nx = x + dx[dir - 1];
-		int ny = y + dy[dir - 1];
-
-		if (!isRange(nx, ny)) {
-			return;
-		}
-
-		if (map[nx][ny] == 0 && !visit[dir][nx][ny]) {
-			go(nx, ny, dir, cnt + 1);
-		}
-	}
-
 	static void bfs() {
 
 		int count = 0;
 
 		while (!q.isEmpty()) {
 			int size = q.size();
+//			System.out.println(count);
+			System.out.println(q);
 			for (int i = 0; i < size; i++) {
 				Point p = q.poll();
 				int dir = p.dir;
+				int x = p.x;
+				int y = p.y;
+				int cnt = 0;
 
-				if (p.x == end.x && p.y == end.y) {
-					if (dir == end.dir) {
-						System.out.println(count);
-					} else {
-						System.out.println(count + 1);
-					}
+				if (p.x == end.x && p.y == end.y && dir == end.dir) {
+					System.out.println(count);
 					return;
 				}
 
-				for (int j = 0; j < 4; j++) {
-					int nx = p.x + dx[j];
-					int ny = p.y + dy[j];
+				switch (dir) {
+				case 1: // 동쪽
 
-					if (!isRange(nx, ny)) {
-						continue;
+					if (!visit[4][x][y]) {
+						q.add(new Point(x, y, 4));
+						visit[4][x][y] = true;
 					}
 
-					if (map[nx][ny] == 0 && !visit[j + 1][nx][ny]) {
-						if (dir == j + 1) {
-							visit[j + 1][p.x][p.y] = true;
-							go(nx, ny, dir, 1);
-						} else {
-							q.add(new Point(p.x, p.y, j + 1));
-							visit[j + 1][p.x][p.y] = true;
+					if (!visit[3][x][y]) {
+						q.add(new Point(x, y, 3));
+						visit[3][x][y] = true;
+					}
+
+					loop: while (cnt < 3) {
+						if (!isRange(x, y + 1)) {
+							break;
 						}
+
+						if (map[x][y + 1] == 0 && !visit[dir][x][y + 1]) {
+							visit[dir][x][y + 1] = true;
+							q.add(new Point(x, y + 1, dir));
+						} else {
+							break loop;
+						}
+						cnt++;
+						y++;
 					}
+					break;
+
+				case 2: // 서쪽
+					if (!visit[4][x][y]) {
+						q.add(new Point(x, y, 4));
+						visit[4][x][y] = true;
+					}
+
+					if (!visit[3][x][y]) {
+						q.add(new Point(x, y, 3));
+						visit[3][x][y] = true;
+					}
+
+					loop: while (cnt < 3) {
+						if (!isRange(x, y - 1)) {
+							break;
+						}
+
+						if (map[x][y - 1] == 0 && !visit[dir][x][y - 1]) {
+							visit[dir][x][y - 1] = true;
+							q.add(new Point(x, y - 1, dir));
+						} else {
+							break loop;
+						}
+						cnt++;
+						y--;
+					}
+					break;
+
+				case 3: // 남쪽
+					if (!visit[1][x][y]) {
+						q.add(new Point(x, y, 1));
+						visit[1][x][y] = true;
+					}
+
+					if (!visit[2][x][y]) {
+						q.add(new Point(x, y, 2));
+						visit[2][x][y] = true;
+					}
+
+					loop: while (cnt < 3) {
+						if (!isRange(x + 1, y)) {
+							break;
+						}
+
+						if (map[x + 1][y] == 0 && !visit[dir][x + 1][y]) {
+							visit[dir][x + 1][y] = true;
+							q.add(new Point(x + 1, y, dir));
+						} else {
+							break loop;
+						}
+						cnt++;
+						x++;
+					}
+					break;
+
+				case 4: // 북쪽
+					if (!visit[1][x][y]) {
+						q.add(new Point(x, y, 1));
+						visit[1][x][y] = true;
+					}
+
+					if (!visit[2][x][y]) {
+						q.add(new Point(x, y, 2));
+						visit[2][x][y] = true;
+					}
+
+					loop: while (cnt < 3) {
+						if (!isRange(x - 1, y)) {
+							break;
+						}
+
+						if (map[x - 1][y] == 0 && !visit[dir][x - 1][y]) {
+							visit[dir][x - 1][y] = true;
+							q.add(new Point(x - 1, y, dir));
+						} else {
+							break loop;
+						}
+						cnt++;
+						x--;
+					}
+					break;
 				}
 			}
+
 			count++;
 		}
 	}
