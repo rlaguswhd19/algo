@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 public class Main2234 {
 	static int[][] map;
-	static int[][] result;
+	static Point[][] result;
 	static Queue<Point> q;
 	static boolean[][] visit;
 	static int n, m;
@@ -25,7 +25,7 @@ public class Main2234 {
 		m = Integer.parseInt(st.nextToken());
 		n = Integer.parseInt(st.nextToken());
 		map = new int[n][m];
-		result = new int[n][m];
+		result = new Point[n][m];
 		visit = new boolean[n][m];
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
@@ -42,19 +42,11 @@ public class Main2234 {
 				}
 			}
 		}
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < m; j++) {
-				System.out.print(result[i][j] + " ");
-			}
-			System.out.println();
-		}
-		s-
 		visit = new boolean[n][m];
 
 		for (int i = 0; i < n; i++) {
 			for (int j = 0; j < m; j++) {
 				if (!visit[i][j]) {
-					System.out.println(i+" "+j);
 					wall(i, j, result[i][j]);
 				}
 			}
@@ -65,7 +57,7 @@ public class Main2234 {
 		System.out.println(wall);
 	}
 
-	static void wall(int x, int y, int num) {
+	static void wall(int x, int y, Point r) {
 		q = new LinkedList<>();
 
 		q.add(new Point(x, y));
@@ -83,11 +75,11 @@ public class Main2234 {
 				}
 
 				if (!visit[nx][ny]) {
-					if (result[nx][ny] == num) {
+					if (result[nx][ny].x == r.x) {
 						q.add(new Point(nx, ny));
 						visit[nx][ny] = true;
 					} else {
-						wall = Math.max(wall, result[nx][ny]+num);
+						wall = Math.max(wall, result[nx][ny].y+r.y);
 					}
 				}
 			}
@@ -122,7 +114,7 @@ public class Main2234 {
 
 		for (int i = 0; i < list.size(); i++) {
 			Point p = list.get(i);
-			result[p.x][p.y] = cnt;
+			result[p.x][p.y] = new Point(room, cnt);
 		}
 
 		max = Math.max(cnt, max);
