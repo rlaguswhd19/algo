@@ -46,22 +46,7 @@ public class Main12100 {
 			for (int i = 0; i < size; i++) {
 				Point[][] temp = q.poll();
 				up(deepCopy(temp));
-//				System.out.println();
-//				for (int j = 0; j < temp.length; j++) {
-//					for (int j2 = 0; j2 < temp.length; j2++) {
-//						System.out.print(temp[j][j2].num + " ");
-//					}
-//					System.out.println();
-//				}
 				right(deepCopy(temp));
-				
-//				System.out.println();
-//				for (int j = 0; j < temp.length; j++) {
-//					for (int j2 = 0; j2 < temp.length; j2++) {
-//						System.out.print(temp[j][j2].num + " ");
-//					}
-//					System.out.println();
-//				}
 				down(deepCopy(temp));
 				left(deepCopy(temp));
 			}
