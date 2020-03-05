@@ -37,8 +37,6 @@ public class Main14501 {
 
 		int count = 0;
 		while (count < n + 1) {
-			System.out.println(count);
-			System.out.println(q);
 			int size = q.size();
 			for (int i = 0; i < size; i++) {
 				Day d = q.poll();
@@ -46,12 +44,25 @@ public class Main14501 {
 				int add = d.add;
 				int cnt = d.cnt;
 				
+				if(count == n) {
+					
+					if(cnt == 0) {
+						sum+=add;
+					}
+					
+					ans = Math.max(ans, sum);
+					continue;
+				}
+				
 				if(cnt == 0) {
 					sum+=add;
 					
+					cnt = 0;
+					add = 0;
+					
 					q.add(new Day(sum, cnt, add));
 					
-					cnt = map[count][0];
+					cnt = map[count][0]-1;
 					add = map[count][1];
 					
 					q.add(new Day(sum, cnt, add));
@@ -61,7 +72,7 @@ public class Main14501 {
 					q.add(new Day(sum, cnt, add));
 				}
 			}
-			//ÇÏ·ç¾¿ Áõ°¡
+			//í•˜ë£¨ì”© ì¦ê°€
 			count++;
 		}
 	}
