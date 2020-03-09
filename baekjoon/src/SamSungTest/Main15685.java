@@ -23,7 +23,7 @@ public class Main15685 {
 		n = Integer.parseInt(br.readLine());
 		list = new ArrayList<>();
 		StringTokenizer st;
-		map = new int[101][101];
+		map = new int[1001][1001];
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
 			int y = Integer.parseInt(st.nextToken());
@@ -39,11 +39,11 @@ public class Main15685 {
 
 		for (int i = 0; i < list.size(); i++) {
 			Point p = list.get(i);
-			map[p.x][p.y]++;
+			map[500+p.x][500+p.y]++;
 		}
 		
-		for (int i = 0; i < 10; i++) {
-			for (int j = 0; j < 10; j++) {
+		for (int i = 0; i < 1001; i++) {
+			for (int j = 0; j < 1001; j++) {
 				if(map[i][j] != 0) {
 					boolean isOk = true;
 					
