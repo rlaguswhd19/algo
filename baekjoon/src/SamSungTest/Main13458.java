@@ -6,9 +6,9 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class Main13458 {
-	static long n, b, c;
+	static int n, b, c;
 	static int[] room;
-	static long[] number;
+	static int[] number;
 	static long ans;
 
 	public static void main(String[] args) throws NumberFormatException, IOException {
@@ -17,7 +17,7 @@ public class Main13458 {
 		ans = 0;
 		n = Integer.parseInt(br.readLine());
 		room = new int[n];
-		number = new long[1000001];
+		number = new int[1000001];
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
 		for (int i = 0; i < n; i++) {
@@ -47,8 +47,8 @@ public class Main13458 {
 				} else {
 					number[num]++; // 감독관 추가
 					
-					long mok = room[i] / c;
-					long nmg = room[i] % c;
+					int mok = room[i] / c;
+					int nmg = room[i] % c;
 
 					number[num] += mok;
 					
