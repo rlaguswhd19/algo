@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -25,7 +26,7 @@ public class Main17144 {
 		c = Integer.parseInt(st.nextToken());
 		t = Integer.parseInt(st.nextToken());
 		map = new int[r][c];
-
+		next = new int[r][c];
 		for (int i = 0; i < r; i++) {
 			st = new StringTokenizer(br.readLine());
 			for (int j = 0; j < c; j++) {
@@ -121,7 +122,9 @@ public class Main17144 {
 	}
 
 	static void diffusion() {
-		next = new int[r][c];
+		for (int i = 0; i < r; i++) {
+			Arrays.fill(next[i], 0);
+		}
 
 		for (int i = 0; i < wind.size(); i++) {
 			Point p = wind.get(i);
