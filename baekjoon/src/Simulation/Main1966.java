@@ -62,7 +62,6 @@ public class Main1966 {
 				}else {
 					q.add(p);
 				}
-				
 			}
 		}
 	}

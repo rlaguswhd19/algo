@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value=""/>
+		<item key="selection" value="Enemy"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="check"/>
+			<item value="enemy"/>
 			<item value="ans"/>
+			<item value="archer"/>
+			<item value="check"/>
 			<item value="map"/>
 			<item value="click"/>
 			<item value="temp"/>
 			<item value="for (int i = 0; i &lt; array.length; i++) {"/>
-			<item value=""/>
 		</list>
 		<list key="replacehistory">
 		</list>
