@@ -4,15 +4,13 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class Main7568 {
 	static int n;
 	static ArrayList<Person> list;
-	static Person max = new Person(0, 0);
 	static int[] ans;
-	static boolean[] visit;
+
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -20,65 +18,29 @@ public class Main7568 {
 		list = new ArrayList<>();
 		StringTokenizer st;
 		ans = new int[n];
-		visit= new boolean[n];
-		
+
 		for (int i = 0; i < n; i++) {
 			st = new StringTokenizer(br.readLine());
-
+			ans[i] = 1;
 			int h = Integer.parseInt(st.nextToken());
 			int w = Integer.parseInt(st.nextToken());
 
 			list.add(new Person(w, h));
-			if (max.h < h && max.w < w) {
-				max = new Person(w, h);
+		}
+
+		for (int i = 0; i < n; i++) {
+			Person p1 = list.get(i);
+			for (int j = 0; j < n; j++) {
+				Person p2 = list.get(j);
+
+				if (p1.h > p2.h && p1.w > p2.w) {
+					ans[j]++;
+				}
 			}
 		}
 
-		grade();
 		for (int i = 0; i < ans.length; i++) {
 			System.out.print(ans[i] + " ");
-		}
-	}
-
-	static void grade() {
-
-		int cnt = 1;
-		int temp;
-		Person next = new Person(0, 0);
-		loop: while (true) {
-			temp = 0;
-			for (int i = 0; i < list.size(); i++) {
-				Person p = list.get(i);
-				
-				if(visit[i]) {
-					continue;
-				}
-				
-				if (max.h > p.h && max.w > p.w) {
-					if(next.w < p.w && next.h < p.h) {
-						next = new Person(p.w, p.h);
-					}
-					continue;
-				} else {
-					visit[i] = true;
-					ans[i] = cnt;
-					temp++;
-				}
-			}
-			cnt += temp;
-			
-			if(cnt == n) {
-				for (int i = 0; i < list.size(); i++) {
-					if(visit[i]) {
-						continue;
-					}else {
-						ans[i] = cnt;
-					}
-				}
-				
-				break loop;
-			}
-			max = new Person(next.w, next.h);
 		}
 	}
 
