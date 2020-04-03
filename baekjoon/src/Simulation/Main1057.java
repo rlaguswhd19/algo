@@ -1,14 +1,11 @@
 package Simulation;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.StringTokenizer;
 
 public class Main1057 {
-	static int n, K, I, ans;
-	static ArrayList<Integer> arr;
+	static int n, K, I;
 
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -17,26 +14,21 @@ public class Main1057 {
 		n = Integer.parseInt(st.nextToken());
 		K = Integer.parseInt(st.nextToken());
 		I = Integer.parseInt(st.nextToken());
-		ans = -1;
-		arr = new ArrayList<>();
-		for (int i = 1; i < n + 1; i++) {
-			arr.add(i);
-		}
-		System.out.println(ans);
-		dfs(1);
+		
+		dfs();
 	}
 
-	static void dfs(int cnt) {
-
-		ArrayList<Integer> remove = new ArrayList<>();
-
-		for (int i = 2; i < arr.size(); i += 2) { // 짝수들을 지운다.
-			if (i == K || i == I) {
-				remove.add(i + 1);
-				continue;
-			} else {
-				remove.add(i);
+	static void dfs() {
+		int cnt = 0;
+		while(true) {
+			if(I == K) {
+				System.out.println(cnt);
+				break;
 			}
+			
+			I = (I+1)/2;
+			K = (K+1)/2;
+			cnt++;
 		}
 	}
 }

@@ -28,6 +28,7 @@ public class Main1182 {
 			ans = new int[i];
 			com(i, 0, 0);
 		}
+		
 		System.out.println(result);
 	}
 	
