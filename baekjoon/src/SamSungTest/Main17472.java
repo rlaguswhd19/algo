@@ -87,6 +87,7 @@ public class Main17472 {
 				}
 			}
 		}
+		
 		kruskal();
 		
 		System.out.println(ans);
