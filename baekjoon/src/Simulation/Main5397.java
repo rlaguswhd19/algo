@@ -47,7 +47,6 @@ public class Main5397 {
 			while(!s2.isEmpty()) {
 				sb.append(s2.pop());
 			}
-			
 			System.out.println(sb);
 		}
 
