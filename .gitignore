@@ -1,1 +1,25 @@
-/.metadata/
+.metadata
+
+bin/
+
+tmp/
+
+*.tmp
+
+*.bak
+
+*.swp
+
+*~.nib
+
+local.properties
+
+.settings/
+
+.loadpath
+
+.recommenders
+
+
+
+출처: https://swalloow.tistory.com/65 [MyCloud]
