@@ -52,6 +52,8 @@ public class Solution9778_카드게임 {
 			}else {
 				System.out.println("#"+tc+" GAZUA");
 			}
+			
+			br.close();
 		}
 	}
 }
