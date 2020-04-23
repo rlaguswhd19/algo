@@ -29,7 +29,6 @@
 <fullyQualifiedTypeName name="java.util.Set"/>
 <fullyQualifiedTypeName name="java.util.HashSet"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
-<fullyQualifiedTypeName name="java.util.concurrent.ConcurrentHashMap"/>
 <fullyQualifiedTypeName name="java.util.Deque"/>
 <fullyQualifiedTypeName name="Simulation.Main1547.Cup"/>
 <fullyQualifiedTypeName name="org.xml.sax.HandlerBase"/>
@@ -45,19 +44,20 @@
 <fullyQualifiedTypeName name="java.io.StreamCorruptedException"/>
 <fullyQualifiedTypeName name="java.util.DuplicateFormatFlagsException"/>
 <fullyQualifiedTypeName name="java.util.PriorityQueue"/>
-<fullyQualifiedTypeName name="java.util.Comparator"/>
 <fullyQualifiedTypeName name="javax.swing.CellEditor"/>
 <fullyQualifiedTypeName name="java.lang.Character"/>
 <fullyQualifiedTypeName name="java.lang.StringBuilder"/>
 <fullyQualifiedTypeName name="D3.Solution9480_민정이와광직이의알파벳공부"/>
 <fullyQualifiedTypeName name="java.lang.Package"/>
 <fullyQualifiedTypeName name="java.lang.Integer"/>
-<fullyQualifiedTypeName name="java.util.Arrays"/>
 <fullyQualifiedTypeName name="java.lang.String"/>
 <fullyQualifiedTypeName name="java.util.Stack"/>
-<fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
 <fullyQualifiedTypeName name="java.io.InputStreamReader"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="java.lang.StackOverflowError"/>
 <fullyQualifiedTypeName name="java.util.StringTokenizer"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="java.util.Comparator"/>
+<fullyQualifiedTypeName name="java.util.concurrent.ConcurrentHashMap"/>
 </qualifiedTypeNameHistroy>
