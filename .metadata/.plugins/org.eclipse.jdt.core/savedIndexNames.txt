@@ -3,7 +3,6 @@ INDEX VERSION 1.131+C:\Users\rlagu\OneDrive\바탕 화면\알고리즘\algo\.metadata\.p
 1324091318.index
 390202777.index
 640985139.index
-2275863803.index
 3939699067.index
 2426408868.index
 4259641222.index
