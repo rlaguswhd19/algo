@@ -24,9 +24,9 @@ public class Solution7272_안경이없어 {
 			} else {
 				boolean isOk = true;
 
-				int num1 = -1;
-				int num2 = -1;
 				for (int i = 0; i < s1.length(); i++) {
+					int num1 = -1;
+					int num2 = -1;
 					char c1 = s1.charAt(i);
 					char c2 = s2.charAt(i);
 
