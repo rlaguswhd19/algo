@@ -20,7 +20,6 @@ public class Solution7193_승현이의수학공부 {
 			int size = s.length() - 1;
 			for (int i = 0; i < s.length(); i++) {
 				int num = s.charAt(i) - '0';
-
 				ans += num;
 			}
 			ans %= n - 1;
