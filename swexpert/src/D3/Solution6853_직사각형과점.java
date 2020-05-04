@@ -42,15 +42,12 @@ public class Solution6853_직사각형과점 {
 		// 내부에 있을때
 		if (x1 <= x && x <= x2 && y1 <= y && y <= y2) {
 			if (x == x1 || x == x2 || y == y1 || y == y2) {
-				System.out.println("변 " + x + " " + y);
 				ans[1]++;
 			} else {
-				System.out.println("안 " + x + " " + y);
 				ans[0]++;
 			}
 		} else { // 외부에 있을때
 			ans[2]++;
-			System.out.println("밖 " + x + " " + y);
 		}
 	}
 }
