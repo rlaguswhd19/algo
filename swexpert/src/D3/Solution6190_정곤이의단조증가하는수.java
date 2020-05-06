@@ -20,7 +20,7 @@ public class Solution6190_정곤이의단조증가하는수 {
 			n = Integer.parseInt(br.readLine());
 			arr = new int[n];
 			StringTokenizer st = new StringTokenizer(br.readLine());
-			ans = 0;
+			ans = -1;
 			
 			for (int i = 0; i < n; i++) {
 				arr[i] = Integer.parseInt(st.nextToken());
