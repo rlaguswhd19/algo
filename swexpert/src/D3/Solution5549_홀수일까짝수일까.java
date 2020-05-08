@@ -15,7 +15,7 @@ public class Solution5549_홀수일까짝수일까 {
 
 			int n = s.charAt(s.length() - 1);
 
-			System.out.println("#" + tc + " " + (n % 2 == 0 ? "Odd" : "Even"));
+			System.out.println("#" + tc + " " + (n % 2 == 0 ? "Even" : "Odd"));
 		}
 	}
 }
