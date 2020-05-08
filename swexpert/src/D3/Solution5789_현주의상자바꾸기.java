@@ -30,7 +30,7 @@ public class Solution5789_현주의상자바꾸기 {
 			StringBuilder sb = new StringBuilder();
 			sb.append("#"+tc+" ");
 			
-			for (int i = 0; i < arr.length; i++) {
+			for (int i = 1; i < arr.length; i++) {
 				sb.append(arr[i]+" ");
 			}
 			
