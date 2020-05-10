@@ -9,8 +9,7 @@ import java.io.IOException;
 public class Solution5215_햄버거다이어트 {
 	static material[] arr;
 	static int N, L, ans;
-	static material[] list;
-
+	static int[] list;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
@@ -23,8 +22,8 @@ public class Solution5215_햄버거다이어트 {
 			L = Integer.parseInt(st.nextToken());
 			ans = 0;
 			arr = new material[N];
-			list = new material[N];
-
+			list = new int[N];
+			
 			for (int i = 0; i < N; i++) {
 				st = new StringTokenizer(br.readLine());
 				int T = Integer.parseInt(st.nextToken());
@@ -33,38 +32,29 @@ public class Solution5215_햄버거다이어트 {
 				arr[i] = new material(T, K);
 			}
 
-			for (int i = 1; i < N; i++) {
-				list = new material[i];
-				com(0, 0, i);
-			}
+			com(0, 0, 0, 0);
 
 			System.out.println("#" + tc + " " + ans);
 		}
 	}
 
-	static void com(int idx, int target, int end) {
-		if (idx == end) {
-			
-			int Tsum = 0;
-			int Lsum = 0;
-			
-			for (int i = 0; i < list.length; i++) {
-				Tsum += list[i].t;
-				Lsum += list[i].k;
+	static void com(int idx, int target, int Tsum, int Lsum) {
+		if (0 < idx && idx <= N) {
+			if (Lsum > L) {
+				return;
 			}
 			
-			if(Lsum <= L) {
-				ans = Math.max(ans, Tsum);
-			}
-			
+			ans = Math.max(ans, Tsum);
+		}
+		
+		if (idx == N) {
 			return;
 		} else if (target == N) {
 			return;
 		} else {
 			material m = arr[target];
-			list[idx] = m;
-			com(idx + 1, target + 1, end);
-			com(idx, target + 1, end);
+			com(idx, target + 1, Tsum, Lsum);
+			com(idx + 1, target + 1, Tsum + m.t, Lsum + m.k);
 		}
 	}
 
