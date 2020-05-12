@@ -54,7 +54,8 @@ public class Solution5293_이진문자열복원 {
 		if (isOk) { // 찾으면 나머지 필요없어
 			return;
 		}
-
+		
+		// 현규형 이게뭐야??
 		if (arr[1] - arr[2] > 1 || arr[2] - arr[1] > 1) {
 			return;
 		}
