@@ -20,7 +20,7 @@ public class Solution3809_화섭이의정수나열 {
 			String s = sb.toString();
 			int ans = 0;
 
-			for (int i = 0; i <= 10000; i++) {
+			for (int i = 0; i <= 1000000; i++) {
 				if (!s.contains("" + i)) {
 					ans = i;
 					break;
