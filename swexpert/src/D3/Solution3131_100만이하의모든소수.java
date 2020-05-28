@@ -10,7 +10,7 @@ public class Solution3131_100만이하의모든소수 {
 			} else {
 				System.out.print(i + " ");
 				int cnt = i;
-				for (int j = i; j < arr.length; j *= i) {
+				for (int j = i; j < arr.length; j += i) {
 					arr[j] = true;
 				}
 			}
