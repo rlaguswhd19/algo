@@ -1,4 +1,4 @@
-package D3;
+package D4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -37,6 +37,7 @@ public class Solution9282_초콜릿과건포도 {
 			setMap();
 
 			ans = dfs(1, 1, n, m);
+			
 			System.out.println("#"+tc+" "+ans);
 		}
 	}
