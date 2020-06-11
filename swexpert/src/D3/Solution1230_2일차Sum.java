@@ -26,6 +26,7 @@ public class Solution1230_2일차Sum {
 						sum2 += num;
 					}
 				}
+				
 			}
 
 			for (int i = 0; i < 100; i++) {
