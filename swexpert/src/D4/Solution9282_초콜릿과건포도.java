@@ -37,8 +37,8 @@ public class Solution9282_초콜릿과건포도 {
 			setMap();
 
 			ans = dfs(1, 1, n, m);
-			
-			System.out.println("#"+tc+" "+ans);
+
+			System.out.println("#" + tc + " " + ans);
 		}
 	}
 
@@ -52,30 +52,36 @@ public class Solution9282_초콜릿과건포도 {
 			return dp[sx][sy][ex][ey];
 		}
 
-		// 현재 건포도 양?
+		// 현재 건포도 양
 		int cnt = sum[ex][ey] - sum[sx - 1][ey] - sum[ex][sy - 1] + sum[sx - 1][sy - 1];
-		int sum = Integer.MAX_VALUE;
+
 		// 가로로 자르는 경우
 		for (int i = sx; i < ex; i++) {
 			int temp = dfs(sx, sy, i, ey) + dfs(i + 1, sy, ex, ey);
-			sum = Math.min(sum, temp + cnt);
+			dp[sx][sy][ex][ey] = Math.min(dp[sx][sy][ex][ey], temp + cnt);
 		}
 
-		for (int i = sy; i < ey; i++) {
+		// 세로로 자르는 경우
+		for (
+
+				int i = sy; i < ey; i++) {
 			int temp = dfs(sx, sy, ex, i) + dfs(sx, i + 1, ex, ey);
-			sum = Math.min(sum, temp + cnt);
+			dp[sx][sy][ex][ey] = Math.min(dp[sx][sy][ex][ey], temp + cnt);
 		}
 
-		return dp[sx][sy][ex][ey] = sum;
+		// 최솟값을 dp배열에 저장 sx,sy ~ ex,ey
+		return dp[sx][sy][ex][ey];
 	}
 
 	static void setMap() {
+		// 누적합 구하기
 		for (int i = 1; i < n + 1; i++) {
 			for (int j = 1; j < m + 1; j++) {
 				sum[i][j] = sum[i - 1][j] + sum[i][j - 1] - sum[i - 1][j - 1] + map[i][j];
 			}
 		}
 
+		// dp 배열 초기화
 		for (int i = 0; i < n + 1; i++) {
 			for (int j = 0; j < m + 1; j++) {
 				for (int j2 = 0; j2 < n + 1; j2++) {
