@@ -1,4 +1,4 @@
-package Line;
+package T2019_2.Line;
 
 public class Solution1 {
 	static String inputString = ">_<";

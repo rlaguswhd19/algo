@@ -1,4 +1,4 @@
-package Line;
+package T2019_2.Line;
 
 public class Solution3 {
 	static String road = "111011110011111011111100011111";

@@ -1,4 +1,4 @@
-package Kakao;
+package T2019_2.Kakao;
 
 public class solution_1 {
 	static Point[] phone;

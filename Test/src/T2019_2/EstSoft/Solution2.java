@@ -1,4 +1,4 @@
-package EstSoft;
+package T2019_2.EstSoft;
 
 public class Solution2 {
 	static int[] A;

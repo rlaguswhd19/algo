@@ -1,3 +1,4 @@
+package T2019_2.wemap;
 import java.util.ArrayList;
 import java.util.Scanner;
 
