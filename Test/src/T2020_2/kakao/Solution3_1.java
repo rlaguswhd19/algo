@@ -1,4 +1,4 @@
-package kakao_2020_02;
+package T2020_2.kakao;
 
 import java.util.Arrays;
 import java.util.HashSet;
