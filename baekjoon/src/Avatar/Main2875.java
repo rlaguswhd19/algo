@@ -1,35 +1,33 @@
-package avatar;
+package Avatar;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main2960 {
+public class Main2875 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
 		int n = Integer.parseInt(st.nextToken());
+		int m = Integer.parseInt(st.nextToken());
 		int k = Integer.parseInt(st.nextToken());
 
-		int[] arr = new int[n + 1];
+//		최대 팀?
+		int max = Math.min(n / 2, m);
 		
-		int cnt = 0;
-		loop: for (int i = 2; i < n + 1; i++) {
-			for (int j = i; j < n + 1; j += i) {
-				if(arr[j] == 0) {
-					arr[j] = 1;
-					cnt++;
-					
-					if (cnt == k) {
-						System.out.println(j);
-						break loop;
-					}
-				}
-				
-			}
+		//		거기에 남는 사람들?
+		int women = n - max * 2;
+		int men = m - max;
+		k = k - (women + men);
+		
+		if (k <= 0) {
+			System.out.println(max);
+		} else {
+			int ans = max - k/3;
+			System.out.println(k % 3 == 0 ? ans : ans - 1);
 		}
 	}
 }
