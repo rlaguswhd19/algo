@@ -26,9 +26,9 @@ public class Main1753 {
 		arr = new ArrayList[v + 1];
 
 		for (int i = 1; i < v + 1; i++) {
-			if(i == k) {
+			if (i == k) {
 				distance[i] = 0;
-			}else {
+			} else {
 				distance[i] = Integer.MAX_VALUE;
 			}
 			arr[i] = new ArrayList<>();
@@ -46,9 +46,9 @@ public class Main1753 {
 
 		dijkstra();
 		for (int i = 1; i < distance.length; i++) {
-			if(distance[i] == Integer.MAX_VALUE) {
+			if (distance[i] == Integer.MAX_VALUE) {
 				System.out.println("INF");
-			}else {
+			} else {
 				System.out.println(distance[i]);
 			}
 		}
@@ -71,15 +71,15 @@ public class Main1753 {
 
 		while (!pq.isEmpty()) {
 			Node node = pq.poll();
-			if(distance[node.num] < node.value) {
+			if (distance[node.num] < node.value) {
 				continue;
 			}
-			
+
 			ArrayList<Node> list = arr[node.num];
-			
+
 			for (int i = 0; i < list.size(); i++) {
 				Node temp = list.get(i);
-				if(distance[temp.num] > distance[node.num] + temp.value) {
+				if (distance[temp.num] > distance[node.num] + temp.value) {
 					distance[temp.num] = distance[node.num] + temp.value;
 					pq.add(new Node(temp.num, distance[temp.num]));
 				}
