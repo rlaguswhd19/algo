@@ -25,7 +25,7 @@ public class Solution2 {
 		kiosk[0] = task; // 첫 손님의 일 시간
 		cnt[0] = 1; // 손님 받음
 
-		for (int i = 1; i < 2; i++) { // 처음 시간을 만든다.
+		for (int i = 1; i < customers.length; i++) { // 처음 시간을 만든다.
 			temp = customers[i].split(" ");
 
 			int nmonth = Integer.parseInt(temp[0].substring(0, 2));
