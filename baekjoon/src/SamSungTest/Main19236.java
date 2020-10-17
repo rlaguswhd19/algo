@@ -92,14 +92,17 @@ public class Main19236 {
 
 			if (isOk(nx, ny)) { // 범위 안이면
 				if (map[nx][ny] != 0) { // 물고기가 있으면
+					
 					int[][] temp = new int[4][4];
 					Fish[] temp_list = new Fish[17];
+					
 					for (int i = 0; i < 4; i++) {
 						for (int j = 0; j < 4; j++) {
 							int num = map[i][j];
 							temp[i][j] = num;
 						}
 					}
+					
 					for (int i = 1; i < temp_list.length; i++) {
 						Fish f = list[i];
 						temp_list[i] = new Fish(f.x, f.y, f.d);
