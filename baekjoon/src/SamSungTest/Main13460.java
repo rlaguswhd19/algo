@@ -71,6 +71,7 @@ public class Main13460 {
 					
 					if (!over[0] && !over[1]) { // 공이 하나도 안들어감
 						if (!visit[ng.blue.x][ng.blue.y][ng.red.x][ng.red.y]) {
+							visit[ng.blue.x][ng.blue.y][ng.red.x][ng.red.y] = true;
 							q.add(ng);
 						}
 					} else { // 공이 하나라도 들어감
