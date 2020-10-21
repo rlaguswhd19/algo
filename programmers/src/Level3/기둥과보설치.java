@@ -124,10 +124,6 @@ public class 기둥과보설치 {
 			}
 		}
 
-//		for (int i = 0; i < cnt; i++) {
-//			System.out.println(Arrays.toString(ans[i]));
-//		}
-
 		return ans;
 	}
 
