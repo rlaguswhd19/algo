@@ -25,22 +25,20 @@ public class Main3 {
 
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
-			// ���� ó��
-			if (c == '(') { // ���ο� �� ��
+			if (c == '(') {
 				q.add(sb.toString());
 				sb = new StringBuilder();
-			} else if (c == ')') { // ���⼭ ó���ϱ�
+			} else if (c == ')') {
 				StringBuilder next = new StringBuilder(q.pollLast());
 				char last = next.charAt(next.length() - 1);
-				// ������ ����
 				next.delete(next.length() - 1, next.length());
 				
 				StringBuilder temp = new StringBuilder();
-				if (last < 65) { // ���ڰ� �ƴϸ�
+				if (last < 65) {
 					for (int j = 0; j < last - '0'; j++) {
 						temp.append(sb);
 					}
-				} else { // ���ڸ�?
+				} else {
 					for (int j = 0; j < sb.length(); j++) {
 						temp.append(last);
 						temp.append(sb.charAt(j));
@@ -49,11 +47,11 @@ public class Main3 {
 				}
 				sb = temp;
 
-				sb = next.append(sb); // �տ��ſ� �ڿ��� ���̱�
-			} else if (c < 65) { // ���ڸ�
+				sb = next.append(sb);
+			} else if (c < 65) {
 				char next = s.charAt(i + 1);
 
-				if (next == '(') { // ������ ���θ�?
+				if (next == '(') {
 					sb.append(c);
 					continue;
 				}

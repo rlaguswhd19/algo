@@ -30,40 +30,33 @@ public class Main2 {
 
 		int now = 0;
 		while (now < day) {
-//			System.out.println(now);
 
-			// ����
 			for (int i = 0; i < n; i++) {
 				map[i] += blocks[now][i];
 			}
 
-			// �ø�Ʈ
-			int h1 = map[0]; // ���� ����
-			int idx1 = 0; // ���� �ε���
+			int h1 = map[0];
+			int idx1 = 0;
 
-			while (idx1 < n - 1) { // ������ �����ϱ�
-//			while (cnt < 2) {
-				int h2 = 0; // �ι�° ����
+			while (idx1 < n - 1) {
+				int h2 = 0;
 				int idx2 = 0;
 				boolean isOk = false;
 				for (int i = idx1 + 1; i < n; i++) {
-					// �ڱ� �ڽź��� ũ�ų� �������� ������
 					if (h1 <= map[i]) {
 						// �ø�Ʈ ä���
 						for (int j = idx1 + 1; j < i; j++) {
-							sum += h1 - map[j]; // ����� �ø�Ʈ ��
+							sum += h1 - map[j];
 							map[j] = h1;
 						}
 
-						// ���̶� �ε��� ����
 						h1 = map[i];
 						idx1 = i;
 
-						// �������� ����
 						isOk = true;
 						break;
 
-					} else { // h1���� ������ ���߿��� ���� ū�Ÿ� �����ϱ�
+					} else {
 						if (h2 < map[i]) {
 							h2 = map[i];
 							idx2 = i;
@@ -71,22 +64,18 @@ public class Main2 {
 					}
 				}
 				
-				if (!isOk) { // ��ã������ �ι�°�� ū �ַ� ä���
-					// ���غ��� �ι�°�� ū ��������
+				if (!isOk) { 
 					for (int i = idx1 + 1; i < idx2; i++) {
-						sum += h2 - map[i]; // ����� �ø�Ʈ ��
+						sum += h2 - map[i];
 						map[i] = h2;
 					}
 
-					// ���̶� �ε��� ����
 					h1 = h2;
 					idx1 = idx2;
 				}
 			}
 			
 			now++;
-			
-//			System.out.println(Arrays.toString(map));
 		}
 		System.out.println(sum);
 	}

@@ -21,7 +21,7 @@ public class Main1 {
 
 		char per = 'B';
 		map = new char[n - 1];
-		// ����� ������
+		
 		for (int i = 0; i < n - 1; i++) {
 			map[i] = per;
 			per += 1;
@@ -50,7 +50,7 @@ public class Main1 {
 		count[(int) tag]++;
 
 		while (now < game) {
-			int m = move[now]; // �̹� ���ӿ� �̵��� Ƚ��
+			int m = move[now];
 			m %= n - 1;
 			idx += m;
 
@@ -64,8 +64,8 @@ public class Main1 {
 			
 			if (!fast[(int) map[idx]]) {
 				char temp = map[idx];
-				map[idx] = tag; // ������ �ڸ��� �ɴ´�.
-				tag = temp; // ���� �ִ��ְ� ������ �ȴ�.
+				map[idx] = tag;
+				tag = temp;
 				count[(int) tag]++;
 			} else {
 				count[(int) tag]++;
