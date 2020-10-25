@@ -1,4 +1,4 @@
-package nhn;
+package T2020_2.nhn;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -25,22 +25,22 @@ public class Main3 {
 
 		for (int i = 0; i < s.length(); i++) {
 			char c = s.charAt(i);
-			// °¡·Î Ã³¸®
-			if (c == '(') { // »õ·Î¿î µé¾î°¥ °Í
+			// ï¿½ï¿½ï¿½ï¿½ Ã³ï¿½ï¿½
+			if (c == '(') { // ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½ï¿½î°¥ ï¿½ï¿½
 				q.add(sb.toString());
 				sb = new StringBuilder();
-			} else if (c == ')') { // ¿©±â¼­ Ã³¸®ÇÏ±â
+			} else if (c == ')') { // ï¿½ï¿½ï¿½â¼­ Ã³ï¿½ï¿½ï¿½Ï±ï¿½
 				StringBuilder next = new StringBuilder(q.pollLast());
 				char last = next.charAt(next.length() - 1);
-				// ¸¶Áö¸· Á¦°Å
+				// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
 				next.delete(next.length() - 1, next.length());
 				
 				StringBuilder temp = new StringBuilder();
-				if (last < 65) { // ¹®ÀÚ°¡ ¾Æ´Ï¸é
+				if (last < 65) { // ï¿½ï¿½ï¿½Ú°ï¿½ ï¿½Æ´Ï¸ï¿½
 					for (int j = 0; j < last - '0'; j++) {
 						temp.append(sb);
 					}
-				} else { // ¹®ÀÚ¸é?
+				} else { // ï¿½ï¿½ï¿½Ú¸ï¿½?
 					for (int j = 0; j < sb.length(); j++) {
 						temp.append(last);
 						temp.append(sb.charAt(j));
@@ -49,11 +49,11 @@ public class Main3 {
 				}
 				sb = temp;
 
-				sb = next.append(sb); // ¾Õ¿¡°Å¿¡ µÚ¿¡°Í ºÙÀÌ±â
-			} else if (c < 65) { // ¼ýÀÚ¸é
+				sb = next.append(sb); // ï¿½Õ¿ï¿½ï¿½Å¿ï¿½ ï¿½Ú¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ì±ï¿½
+			} else if (c < 65) { // ï¿½ï¿½ï¿½Ú¸ï¿½
 				char next = s.charAt(i + 1);
 
-				if (next == '(') { // ´ÙÀ½ÀÌ °¡·Î¸é?
+				if (next == '(') { // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Î¸ï¿½?
 					sb.append(c);
 					continue;
 				}

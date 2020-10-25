@@ -1,4 +1,4 @@
-package nhn;
+package T2020_2.nhn;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -21,7 +21,7 @@ public class Main1 {
 
 		char per = 'B';
 		map = new char[n - 1];
-		// »ç¶÷µé ¾ÉÈ÷±â
+		// ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		for (int i = 0; i < n - 1; i++) {
 			map[i] = per;
 			per += 1;
@@ -50,7 +50,7 @@ public class Main1 {
 		count[(int) tag]++;
 
 		while (now < game) {
-			int m = move[now]; // ÀÌ¹ø °ÔÀÓ¿¡ ÀÌµ¿ÇÒ È½¼ö
+			int m = move[now]; // ï¿½Ì¹ï¿½ ï¿½ï¿½ï¿½Ó¿ï¿½ ï¿½Ìµï¿½ï¿½ï¿½ È½ï¿½ï¿½
 			m %= n - 1;
 			idx += m;
 
@@ -64,8 +64,8 @@ public class Main1 {
 			
 			if (!fast[(int) map[idx]]) {
 				char temp = map[idx];
-				map[idx] = tag; // ¼ú·¡°¡ ÀÚ¸®¿¡ ¾É´Â´Ù.
-				tag = temp; // ¿ø·¡ ÀÖ´ø¾Ö°¡ ¼ú·¡°¡ µÈ´Ù.
+				map[idx] = tag; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ú¸ï¿½ï¿½ï¿½ ï¿½É´Â´ï¿½.
+				tag = temp; // ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´ï¿½ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½È´ï¿½.
 				count[(int) tag]++;
 			} else {
 				count[(int) tag]++;
