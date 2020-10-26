@@ -24,24 +24,6 @@ public class 순위 {
 
 			down[win].add(lose);
 			up[lose].add(win);
-
-//			// 이긴애보다 높은 애들을 활용
-//			for (int num : up[win]) {
-//				// 이긴애들에게 지금 진애들을 넣어준다.
-//				down[num].add(lose);
-//
-//				// 진애는 이긴애보다 높은애들을 넣어준다.
-//				up[lose].add(num);
-//			}
-//
-//			// 진애보다 낮은 애들을 활용
-//			for (int num : down[lose]) {
-//				// 이긴애보다 낮은애들로 넣어준
-//				down[win].add(num);
-//
-//				// 진애보다 낮은애들은 이긴애로 넣어준다.
-//				up[num].add(win);
-//			}
 		}
 
 		for (int i = 1; i < n + 1; i++) {
