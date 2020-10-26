@@ -14,7 +14,6 @@ public class 무지의먹방라이브 {
 	}
 
 	static int solution(int[] food_times, long k) {
-		HashSet<Integer> foods = new HashSet<>();
 		HashMap<Integer, ArrayList<Integer>> idx = new HashMap<>();
 		boolean[] visit = new boolean[food_times.length + 1]; // 다먹은 음식인지 확인하기
 		boolean isOk = true;
@@ -27,15 +26,13 @@ public class 무지의먹방라이브 {
 				arr.add(i + 1); // 있으면 인덱스를 넣어준다.
 				idx.put(food, arr);
 			} else {
-				foods.add(food); // 음식량 추가
-
 				ArrayList<Integer> arr = new ArrayList<>();
 				arr.add(i + 1);
 				idx.put(food, arr); // 인덱스 추가
 			}
 		}
 
-		ArrayList<Integer> list = new ArrayList<>(foods); // 음식물 량에 따른 갯수
+		ArrayList<Integer> list = new ArrayList<>(idx.keySet()); // 음식물 량에 따른 갯수
 		Collections.sort(list);
 		long size = food_times.length; // 음식들 사이즈
 		int past = 0;
