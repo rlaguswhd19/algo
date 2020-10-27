@@ -57,87 +57,53 @@ public class 블록이동하기 {
 		int dir = g.dir;
 		Robot r1 = g.r1;
 		Robot r2 = g.r2;
-
+		int s, e, next_dir;
 		if (dir == 0) { // 가로인 경우 세로로
+			s = 0;
+			e = 2;
+			next_dir = 1;
+		} else {
+			s = 2;
+			e = 4;
+			next_dir = 0;
+		}
 
-			// r1이 축인경우
-			for (int j = 0; j < 2; j++) {
-				Robot stop_r; // 기준 로봇
-				Robot move_r;
-				if (j == 0) {
-					stop_r = r1;
-					move_r = r2;
-				} else {
-					stop_r = r2;
-					move_r = r1;
-				}
-
-				int nx, ny, mx, my;
-				for (int i = 0; i < 2; i++) {
-					nx = stop_r.x + dx[i];
-					ny = stop_r.y + dy[i];
-
-					mx = move_r.x + dx[i];
-					my = move_r.y + dy[i];
-
-					// 먼저 밑과 위를 확인한다.
-					if (!isOk(nx, ny) || !isOk(mx, my)) {
-						continue;
-					}
-
-					if (board[nx][ny] == 1 || board[mx][my] == 1) {
-						continue;
-					}
-
-					if (visit[stop_r.x][stop_r.y][nx][ny] || visit[nx][ny][stop_r.x][stop_r.y]) {
-						continue;
-					}
-
-					visit[stop_r.x][stop_r.y][nx][ny] = true;
-					visit[nx][ny][stop_r.x][stop_r.y] = true;
-					q.add(new Game(stop_r, new Robot(nx, ny), 1));
-				}
+		// r1이 축인경우
+		for (int j = 0; j < 2; j++) {
+			Robot stop_r; // 기준 로봇
+			Robot move_r;
+			if (j == 0) {
+				stop_r = r1;
+				move_r = r2;
+			} else {
+				stop_r = r2;
+				move_r = r1;
 			}
-			// r2이 축인경우
 
-		} else { // 세로인 경우 가로로
-			for (int j = 0; j < 2; j++) {
-				Robot stop_r; // 기준 로봇
-				Robot move_r;
+			int nx, ny, mx, my;
+			for (int i = s; i < e; i++) {
+				nx = stop_r.x + dx[i];
+				ny = stop_r.y + dy[i];
 
-				if (j == 0) {
-					stop_r = r1;
-					move_r = r2;
-				} else {
-					stop_r = r2;
-					move_r = r1;
+				mx = move_r.x + dx[i];
+				my = move_r.y + dy[i];
+
+				// 먼저 밑과 위를 확인한다.
+				if (!isOk(nx, ny) || !isOk(mx, my)) {
+					continue;
 				}
 
-				int nx, ny, mx, my;
-				for (int i = 2; i < 4; i++) {
-					nx = stop_r.x + dx[i];
-					ny = stop_r.y + dy[i];
-
-					mx = move_r.x + dx[i];
-					my = move_r.y + dy[i];
-
-					// 먼저 밑과 위를 확인한다.
-					if (!isOk(nx, ny) || !isOk(mx, my)) {
-						continue;
-					}
-
-					if (board[nx][ny] == 1 || board[mx][my] == 1) {
-						continue;
-					}
-
-					if (visit[stop_r.x][stop_r.y][nx][ny] || visit[nx][ny][stop_r.x][stop_r.y]) {
-						continue;
-					}
-
-					visit[stop_r.x][stop_r.y][nx][ny] = true;
-					visit[nx][ny][stop_r.x][stop_r.y] = true;
-					q.add(new Game(stop_r, new Robot(nx, ny), 0));
+				if (board[nx][ny] == 1 || board[mx][my] == 1) {
+					continue;
 				}
+
+				if (visit[stop_r.x][stop_r.y][nx][ny] || visit[nx][ny][stop_r.x][stop_r.y]) {
+					continue;
+				}
+
+				visit[stop_r.x][stop_r.y][nx][ny] = true;
+				visit[nx][ny][stop_r.x][stop_r.y] = true;
+				q.add(new Game(stop_r, new Robot(nx, ny), next_dir));
 			}
 		}
 	}
