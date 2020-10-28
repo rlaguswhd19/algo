@@ -41,7 +41,6 @@ public class 등굣길 {
 				}
 			}
 		});
-
 		pq.add(new Point(0, 0, 0));
 		distance[0][0] = 0;
 		cnt[0][0] = 1;
@@ -49,7 +48,7 @@ public class 등굣길 {
 		while (!pq.isEmpty()) {
 			Point p = pq.poll();
 			System.out.println(p);
-			
+
 			if (p.cost > distance[p.x][p.y]) { // 최단거리가 아니면 넘기기
 				continue;
 			}
@@ -72,8 +71,8 @@ public class 등굣길 {
 				}
 			}
 		}
-		
-		return cnt[n-1][m-1];
+
+		return cnt[n - 1][m - 1];
 	}
 
 	static boolean isOk(int nx, int ny, int n, int m) {
