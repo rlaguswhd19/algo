@@ -34,7 +34,7 @@ public class 등굣길 {
 
 			@Override
 			public int compare(Point p1, Point p2) {
-				if (p1.cnt < p2.cnt) {
+				if (p1.cost < p2.cost) {
 					return -1;
 				} else {
 					return 1;
@@ -50,7 +50,7 @@ public class 등굣길 {
 			Point p = pq.poll();
 			System.out.println(p);
 			
-			if (p.cnt > distance[p.x][p.y]) { // 최단거리가 아니면 넘기기
+			if (p.cost > distance[p.x][p.y]) { // 최단거리가 아니면 넘기기
 				continue;
 			}
 
@@ -62,11 +62,11 @@ public class 등굣길 {
 					continue;
 				}
 
-				if (distance[nx][ny] > p.cnt + 1) { // 새로운 최단거리
+				if (distance[nx][ny] > p.cost + 1) { // 새로운 최단거리
 					cnt[nx][ny] = cnt[p.x][p.y]; // 갯수 전에놈을 추가
-					distance[nx][ny] = p.cnt + 1; // 거리 초기화
-					pq.add(new Point(nx, ny, p.cnt + 1)); // 최초 하나 넣기
-				} else if (distance[nx][ny] == p.cnt + 1) {
+					distance[nx][ny] = p.cost + 1; // 거리 초기화
+					pq.add(new Point(nx, ny, p.cost + 1)); // 최초 하나 넣기
+				} else if (distance[nx][ny] == p.cost + 1) {
 					cnt[nx][ny] += cnt[p.x][p.y]; // 나머지는 갯수만 추가
 					cnt[nx][ny] %= 1000000007; // 나눠주기
 				}
@@ -85,18 +85,18 @@ public class 등굣길 {
 	}
 
 	static class Point {
-		int x, y, cnt;
+		int x, y, cost;
 
-		public Point(int x, int y, int cnt) {
+		public Point(int x, int y, int cost) {
 			super();
 			this.x = x;
 			this.y = y;
-			this.cnt = cnt;
+			this.cost = cost;
 		}
 
 		@Override
 		public String toString() {
-			return "Point [x=" + x + ", y=" + y + ", cnt=" + cnt + "]";
+			return "Point [x=" + x + ", y=" + y + ", cost=" + cost + "]";
 		}
 	}
 }
