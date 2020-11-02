@@ -13,9 +13,9 @@ public class 셔틀버스 {
 //				"23:59", "23:59", "23:59", "23:59", "23:59", "23:59" };
 
 		int n = 2;
-		int t = 1;
-		int m = 2;
-		String[] timetable = { "09:00", "09:00", "09:00", "09:00" };
+		int t = 10;
+		int m = 3;
+		String[] timetable = { "09:05", "09:09", "09:12" };
 		System.out.println(solution(n, t, m, timetable));
 	}
 
@@ -68,9 +68,9 @@ public class 셔틀버스 {
 					}
 
 					last--;
-					
+
 					make(sb, last);
-					
+
 					return sb.toString();
 				}
 			} else {
@@ -89,22 +89,22 @@ public class 셔틀버스 {
 
 		return null;
 	}
-	
+
 	static void make(StringBuilder sb, int time) {
-		if(time/60 < 10) {
+		if (time / 60 < 10) {
 			sb.append(0);
-			sb.append(time/60);
-		}else {
-			sb.append(time/60);
+			sb.append(time / 60);
+		} else {
+			sb.append(time / 60);
 		}
-		
+
 		sb.append(":");
-		
-		if(time%60 < 10) {
+
+		if (time % 60 < 10) {
 			sb.append(0);
-			sb.append(time%60);
-		}else {
-			sb.append(time%60);
+			sb.append(time % 60);
+		} else {
+			sb.append(time % 60);
 		}
 	}
 }
