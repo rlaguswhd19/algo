@@ -45,7 +45,6 @@ public class 입국심사 {
 		if(sum >= n){
 			return true;
 		}
-        
         return false;
 	}
 }
