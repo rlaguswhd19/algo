@@ -8,14 +8,14 @@ public class 입국심사 {
 	}
 
 	static long solution(int n, int[] times) {
-		long max = 0;
+		long min = Integer.MAX_VALUE;
 		for (int i = 0; i < times.length; i++) {
-			max = Math.max(max, times[i]);
+			min = Math.min(min, times[i]);
 		}
 
 		long ans = Long.MAX_VALUE;
 		long left = 1;
-		long right = max * n;
+		long right = min * n;
 		long mid = 0;
 
 		while (left <= right) {

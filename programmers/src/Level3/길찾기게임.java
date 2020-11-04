@@ -1,6 +1,7 @@
 package Level3;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class 길찾기게임 {
@@ -28,20 +29,35 @@ public class 길찾기게임 {
 				map.put(x, arr);
 			}
 		}
-		
-	}
-	static class Node{
-		int r, l;
 
-		public Node(int r, int l) {
+		ArrayList<Integer> list = new ArrayList<>(map.keySet());
+		Collections.sort(list);
+
+		ArrayList<Integer> past = map.get(list.get(list.size() - 1));
+		for (int i = list.size() - 2; i >= 0; i--) {
+			int key = list.get(i);
+
+			arr = map.get(key);
+			for (int j = 0; j < arr.size(); j++) {
+				
+			}
+		}
+	}
+
+	static class Node {
+		int r, l, min, max;
+
+		public Node(int r, int l, int min, int max) {
 			super();
 			this.r = r;
 			this.l = l;
+			this.min = min;
+			this.max = max;
 		}
 
 		@Override
 		public String toString() {
-			return "Node [r=" + r + ", l=" + l + "]";
+			return "Node [r=" + r + ", l=" + l + ", min=" + min + ", max=" + max + "]";
 		}
 	}
 }
