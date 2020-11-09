@@ -5,6 +5,7 @@ import java.util.HashMap;
 
 public class 가사검색_Trie {
 
+	// 효율성 2번 시간초과 및 효율성 안좋음
 	public static void main(String[] args) {
 		String[] words = { "frodo", "front", "frost", "frozen", "frame", "kakao" };
 		String[] queries = { "fro??", "????o", "fr???", "fro???", "pro?" };

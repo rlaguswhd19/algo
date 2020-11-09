@@ -4,7 +4,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 
 public class 가사검색_Trie_reverse {
-
+	
+	// Trie를 만들때 뒤에서 부터 만드는것을 추가해서 suffix인 경우 뒤에서 만든 Trie를 사용한다.
 	public static void main(String[] args) {
 		String[] words = { "frodo", "front", "frost", "frozen", "frame", "kakao" };
 		String[] queries = { "fro??", "????o", "fr???", "fro???", "pro?" };

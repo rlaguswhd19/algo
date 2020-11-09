@@ -8,6 +8,7 @@ public class 가사검색 { // 효율성 2번 실패
 	static HashMap<Integer, ArrayList<Integer>[][]> map;
 	static HashMap<Integer, Integer> count;
 
+	// 효율성 2번 시간초과
 	public static void main(String[] args) {
 		String[] words = { "frodo", "front", "frost", "frozen", "frame", "kakao" };
 		String[] queries = { "fro??", "?????", "fr???", "fro???", "pro?" };
