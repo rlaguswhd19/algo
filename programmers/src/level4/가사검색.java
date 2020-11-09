@@ -9,6 +9,7 @@ public class 가사검색 { // 효율성 2번 실패
 	static HashMap<Integer, Integer> count;
 
 	// 효율성 2번 시간초과
+	// 모든 자릿수의 알파벳에 인덱스들을 저장해 놓고 교집합으로 모든 조건을 수렴하는것을 return 했으나 겹치는 인덱스가 많은 경우 탐색의 범위가 넓어 2번 초과한다고 예상
 	public static void main(String[] args) {
 		String[] words = { "frodo", "front", "frost", "frozen", "frame", "kakao" };
 		String[] queries = { "fro??", "?????", "fr???", "fro???", "pro?" };
