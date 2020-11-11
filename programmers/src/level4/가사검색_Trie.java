@@ -6,6 +6,7 @@ import java.util.HashMap;
 public class 가사검색_Trie {
 
 	// 효율성 2번 시간초과 및 효율성 안좋음
+	// Trie 알고리즘을 활용해 타고간다. ?을 만날경우 모든 Trie를 탐색하면 역시나 시간초과가 된다.
 	public static void main(String[] args) {
 		String[] words = { "frodo", "front", "frost", "frozen", "frame", "kakao" };
 		String[] queries = { "fro??", "????o", "fr???", "fro???", "pro?" };
