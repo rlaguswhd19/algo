@@ -64,10 +64,5 @@ public class 풍선터트리기 {
 			this.val = val;
 			this.idx = idx;
 		}
-
-		@Override
-		public String toString() {
-			return "Point [val=" + val + ", idx=" + idx + "]";
-		}
 	}
 }
