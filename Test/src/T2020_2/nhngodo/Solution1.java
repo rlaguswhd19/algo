@@ -1,4 +1,4 @@
-package nhngodo;
+package T2020_2.nhngodo;
 
 public class Solution1 {
 	public static void main(String[] args) {
