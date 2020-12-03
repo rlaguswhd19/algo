@@ -15,8 +15,7 @@ import java.util.StringTokenizer;
 public class Main5719 {
 	static int n, m, s, d, ans;
 	static int[] distance;
-	static HashMap<Integer, ArrayList<Point>> map;
-	static HashMap<Integer, ArrayList<Point>> remove;
+	static int[][] list;
 	static PriorityQueue<Point> pq;
 
 	public static void main(String[] args) throws IOException {
@@ -31,36 +30,33 @@ public class Main5719 {
 			}
 
 			distance = new int[n];
-			map = new HashMap<>();
-			remove = new HashMap<>();
+			list = new int[n][n];
 
 			st = new StringTokenizer(br.readLine());
 			s = Integer.parseInt(st.nextToken());
 			d = Integer.parseInt(st.nextToken());
 
-			ArrayList<Point> temp;
 			int now, next, cost;
 			for (int i = 0; i < m; i++) {
 				st = new StringTokenizer(br.readLine());
 				now = Integer.parseInt(st.nextToken());
 				next = Integer.parseInt(st.nextToken());
 				cost = Integer.parseInt(st.nextToken());
-				if (map.containsKey(now)) {
-					temp = map.get(now);
-				} else {
-					temp = new ArrayList<>();
-				}
-
-				temp.add(new Point(next, cost));
-				map.put(now, temp);
+				list[now][next] = cost;
 			}
-			
+
 			Arrays.fill(distance, Integer.MAX_VALUE);
 			distance[s] = 0;
 			dijkstra();
 			
-			remove_point();
-
+			deleteNode();
+			
+//			for (int i = 0; i < n; i++) {
+//				for (int j = 0; j < n; j++) {
+//					System.out.print(list[i][j]+" ");
+//				}System.out.println();
+//			}
+			
 			Arrays.fill(distance, Integer.MAX_VALUE);
 			distance[s] = 0;
 			dijkstra();
@@ -68,39 +64,24 @@ public class Main5719 {
 		}
 	}
 
-	static void remove_point() {
-		Queue<Point> q = new LinkedList<>();
-		q.add(new Point(d, distance[d]));
-		ArrayList<Point> temp;
-
+	static void deleteNode() {
+		Queue<Integer> q = new LinkedList<>();
+		q.add(d);
+		
+		ArrayList<Integer> temp;
 		while (!q.isEmpty()) {
-			Point now = q.poll();
+			int now = q.poll();
 			
-			if(!remove.containsKey(now.next)) {
-				continue;
-			}
-			
-			temp = remove.get(now.next);
-			
-			for (int i = 0; i < temp.size(); i++) {
-				Point p = temp.get(i);
-
-				if (distance[p.next] == now.cost - p.cost) {
-					delete(p.next, now.next);
-					q.add(new Point(p.next, distance[p.next]));
+			for (int i = 0; i < n; i++) {
+				
+				if(list[i][now] == 0) {
+					continue;
 				}
-			}
-		}
-	}
-
-	static void delete(int now, int next) {
-		ArrayList<Point> temp = map.get(now);
-
-		for (int i = 0; i < temp.size(); i++) {
-			Point p = temp.get(i);
-			if (p.next == next) {
-				temp.remove(i);
-				return;
+				
+				if(distance[now] == distance[i] + list[i][now]) {
+					list[i][now] = 0;
+					q.add(i);
+				}
 			}
 		}
 	}
@@ -115,36 +96,23 @@ public class Main5719 {
 		});
 
 		pq.add(new Point(s, 0));
-		ArrayList<Point> temp;
-		ArrayList<Point> remove_temp;
+		ArrayList<Integer> temp;
 		while (!pq.isEmpty()) {
 //			System.out.println(pq);
 			Point now = pq.poll();
 			if (now.cost > distance[now.next]) {
 				continue;
 			}
-			
-			if (!map.containsKey(now.next)) {
-				continue;
-			}
 
-			temp = map.get(now.next);
-
-			for (int i = 0; i < temp.size(); i++) {
-				Point p = temp.get(i);
-
-				if (distance[now.next] + p.cost <= distance[p.next]) {
-					distance[p.next] = distance[now.next] + p.cost;
-
-					if (remove.containsKey(p.next)) {
-						remove_temp = remove.get(p.next);
-					} else {
-						remove_temp = new ArrayList<>();
-					}
-
-					remove_temp.add(new Point(now.next, p.cost));
-					remove.put(p.next, remove_temp);
-					pq.add(new Point(p.next, distance[p.next]));
+			for (int i = 0; i < n; i++) {
+				
+				if(list[now.next][i] == 0) {
+					continue;
+				}
+				
+				if (distance[now.next] + list[now.next][i] < distance[i]) {
+					distance[i] = distance[now.next] + list[now.next][i];
+					pq.add(new Point(i, distance[i]));
 				}
 			}
 		}
@@ -157,11 +125,6 @@ public class Main5719 {
 			super();
 			this.next = next;
 			this.cost = cost;
-		}
-
-		@Override
-		public String toString() {
-			return "Point [next=" + next + ", cost=" + cost + "]";
 		}
 	}
 }
