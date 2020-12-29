@@ -1,7 +1,6 @@
 package programmers.level2;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class 수식최대화 {
 	static boolean[] visit = new boolean[3];
@@ -17,7 +16,7 @@ public class 수식최대화 {
 	static long solution(String expression) {
 		ans = 0;
 		char temp;
-		LinkedList<String> numbers = new LinkedList<>();
+		ArrayList<String> numbers = new ArrayList<>();
 		StringBuilder sb = new StringBuilder();
 		for (int i = 0; i < expression.length(); i++) {
 			temp = expression.charAt(i);
@@ -36,7 +35,7 @@ public class 수식최대화 {
 		return ans;
 	}
 
-	static void per(int idx, LinkedList<String> numbers) {
+	static void per(int idx, ArrayList<String> numbers) {
 		if (idx == list.length) {
 			ArrayList<String> copy = new ArrayList<>();
 			for (int j = 0; j < numbers.size(); j++) {
@@ -64,6 +63,7 @@ public class 수식최대화 {
 						copy.remove(j - 1);
 						copy.remove(j - 1);
 						copy.add(j - 1, Long.toString(res));
+						System.out.println(copy);
 						j--;
 					}
 				}
