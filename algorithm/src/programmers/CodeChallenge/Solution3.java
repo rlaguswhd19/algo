@@ -1,4 +1,4 @@
-package programmers.월간코드챌린지;
+package programmers.CodeChallenge;
 
 import java.util.ArrayList;
 

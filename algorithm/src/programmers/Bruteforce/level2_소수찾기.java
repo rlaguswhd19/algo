@@ -1,4 +1,4 @@
-package programmers.완전탐색;
+package programmers.Bruteforce;
 
 import java.util.*;
 

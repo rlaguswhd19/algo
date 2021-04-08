@@ -1,4 +1,4 @@
-package programmers.월간코드챌린지;
+package programmers.CodeChallenge;
 
 public class Solution2 {
 	public static void main(String[] args) {

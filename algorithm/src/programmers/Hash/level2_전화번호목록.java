@@ -1,4 +1,4 @@
-package programmers.해시;
+package programmers.Hash;
 
 public class level2_전화번호목록 {
 	static String[] phone_book = {"119", "97674223", "1195524421"};
