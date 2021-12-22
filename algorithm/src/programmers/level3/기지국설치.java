@@ -18,23 +18,19 @@ public class 기지국설치 {
         for (int station : stations) {
             if(station + w >= next && station - w <= next) {
                 next = station + w + 1;
-                System.out.println("N : " + next);
                 continue;
             }
 
             distance = station - w - next;
-            System.out.println("d : " + distance);
             ans += distance / len;
             if (distance % len != 0) {
                 ans++;
             }
             next = station + w + 1;
-            System.out.println("n : " + next);
         }
 
         if (next <= n) {
             distance = n - next + 1;
-            System.out.println("d : " + distance);
             ans += distance / len;
             if (distance % len != 0) {
                 ans++;
